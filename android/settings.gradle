@@ -1,6 +1,11 @@
 pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
 plugins { id("com.facebook.react.settings") }
-extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
+extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
+	ex.root.set(file(".."))
+	ex.reactNativeDir.set(file("../node_modules/react-native"))
+	ex.codegenDir.set(file("../node_modules/@react-native/codegen"))
+	ex.cliFile.set(file("../node_modules/react-native/cli.js"))
+}
 rootProject.name = 'FoodIQ'
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')
